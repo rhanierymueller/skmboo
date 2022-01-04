@@ -1,0 +1,66 @@
+
+<h1 class="tittle">Cadastro de Clientes</h1>
+<form class="forms" [formGroup]="clienteForm" (ngSubmit)="onFormSubmit(clienteForm.value)">
+    <div class="form-group ">
+        <label for="formGroupExampleInput">Nome Completo</label>
+        <input formControlName="Nome"  class="form-control" id="Nome" placeholder="Nome">
+    </div>
+    <div class="form-group padding-text">
+        <label for="formGroupExampleInput2">Data Cadastro</label>
+        <input formControlName="Data_Cadastro"  class="form-control" id="Data_Cadastro" placeholder="Data Cadastro" type="date">
+    </div>
+    <div class="form-group padding-text">
+        <label for="formGroupExampleInput2">CPF/CNPJ</label>
+        <input formControlName="Cpf_Cnpj"  class="form-control" id="Cpf_Cnpj" placeholder="CPF/CNPJ">
+    </div>
+    <div class="form-group padding-text">
+        <label for="formGroupExampleInput2">Data Nascimento</label>
+        <input formControlName="Data_Nascimento"  class="form-control" id="Data_Nascimento" placeholder="Data Nascimento" type="date">
+    </div>
+    <div class="form-group padding-text">
+        <label for="formGroupExampleInput2">Tipo Pessoa</label>
+        <select class="form-select" aria-label="Default select example" formControlName="Tipo" id="Tipo"  placeholder="Tipo Pessoa">
+            <option value="F">Fisica</option>
+            <option value="J">Juridica</option>
+        </select>
+    </div>
+    <div class="form-group padding-text">
+        <label for="formGroupExampleInput2">Telefone</label>
+        <input formControlName="Telefone"  class="form-control" id="Telefone" placeholder="Telefone">
+    </div>
+    <div class="form-group padding-text">
+        <label for="formGroupExampleInput2">Email</label>
+        <input formControlName="Email"  class="form-control" id="Email" placeholder="Email">
+    </div>
+    <div class="form-group padding-text">
+        <label for="formGroupExampleInput2">Cep</label>
+        <input formControlName="Cep"  class="form-control" id="Cep" placeholder="Cep">
+    </div>
+    <div class="form-group padding-text">
+        <label for="formGroupExampleInput2">Logradouro</label>
+        <input formControlName="Logradouro"  class="form-control" id="Logradouro" placeholder="Logradouro">
+    </div>
+    <div class="form-group padding-text">
+        <label for="formGroupExampleInput2">Numero</label>
+        <input formControlName="Numero"  class="form-control" id="Numero" placeholder="Numero">
+    </div>
+    <div class="form-group padding-text">
+        <label for="formGroupExampleInput2">Bairro</label>
+        <input formControlName="Bairro"  class="form-control" id="Bairro" placeholder="Bairro">
+    </div>
+    <div class="form-group padding-text">
+        <label for="formGroupExampleInput2">Complemento</label>
+        <input formControlName="Complemento"  class="form-control" id="Complemento" placeholder="Complemento">
+    </div>
+    <div class="form-group padding-text ">
+        <label for="formGroupExampleInput2">Cidade</label>
+        <input formControlName="Cidade"  class="form-control" id="Cidade" placeholder="Cidade">
+    </div>
+    <div class="form-group padding-text">
+        <label for="formGroupExampleInput2">UF</label>
+        <input formControlName="UF"  class="form-control" id="UF" placeholder="UF">
+    </div>
+    <div class="button-cad-cliente">
+        <button type="submit" class="btn btn-success btn-prop">Enviar</button>   
+    </div>
+</form>
