@@ -1,19 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <div class="container">
-      <a routerLink="dashboard" class="navbar-brand text-light" > Cadastro de Clientes </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #af6b00;">
+  <div class="container" style="margin-left: 0%; width: 100%">
+    <a routerLink="dashboard" class="navbar-brand text-light">Skmboo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" routerLinkActive="active">
-          <a routerLink="list-client" class="nav-link text-light">Listagem</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a routerLink="cadastro-cliente" class="nav-link text-light">Cadastrar Cliente</a>
+          <a routerLink="home" class="nav-link text-light">Inicio</a>
         </li>
       </ul>
     </div>
-    </div>
+  </div>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item" routerLinkActive="active">
+      <a routerLink="cadastro-cliente" class="nav-link text-light">Cadastrar-se</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a routerLink="cadastro-cliente" class="nav-link text-light">Entrar</a>
+    </li>
+  </ul>
 </nav>
-  

@@ -5,7 +5,7 @@ import { ListClientComponent } from './list-client/list-client.component';
 
 const routes: Routes = [
   {path: 'cadastro-cliente', component: CadastroClienteComponent},
-  {path: 'list-client', component: ListClientComponent}
+  {path: 'home', component: ListClientComponent}
 ];
 
 @NgModule({

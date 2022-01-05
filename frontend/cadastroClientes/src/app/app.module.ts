@@ -9,7 +9,7 @@ import { ClienteService } from './cliente.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { ListClientComponent } from './list-client/list-client.component';
-
+import { NgbModule, NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +21,10 @@ import { ListClientComponent } from './list-client/list-client.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    NgbPaginationModule,
+    NgbAlertModule
   ],
   providers: [HttpClientModule, ClienteService],
   bootstrap: [AppComponent]
