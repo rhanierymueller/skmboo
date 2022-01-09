@@ -1,66 +1,83 @@
 
-<h1 class="tittle">Cadastro de Clientes</h1>
+<h2 class="tittle">Criar minha conta</h2>
+<p class="subtittle">Informe os seus dados abaixo para criar sua conta.</p>
 <form class="forms" [formGroup]="clienteForm" (ngSubmit)="onFormSubmit(clienteForm.value)">
+
     <div class="form-group ">
-        <label for="formGroupExampleInput">Nome Completo</label>
-        <input formControlName="Nome"  class="form-control" id="Nome" placeholder="Nome">
+      <label for="formGroupExampleInput">Nome Completo</label>
+      <input formControlName="Nome" [ngClass]="{'border-error': mensagemErroNome }" (blur)="onBlurEventName($event)"  class="form-control" id="Nome" placeholder="Insira seu nome completo">
+      <p class="error">{{this.mensagemErroNome}}</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 form-group padding-text">
+            <label>Quero me cadastrar como:</label>
+            <select class="form-select" formControlName="Tipo" id="Tipo">
+                <option  value="F">Pessoa Física</option>
+                <option value="J">Pessoa Jurídica</option>
+            </select>
+        </div>
+        <div class="col-md-6 form-group padding-text">
+            <label for="formGroupExampleInput2">CPF/CNPJ</label>
+            <input type='number' formControlName="Cpf_Cnpj"  class="form-control" id="Cpf_Cnpj" maxlength="11" placeholder="Insira seu CPF ou CNPJ">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-group padding-text">
+            <label for="formGroupExampleInput2">Telefone</label>
+            <input formControlName="Telefone"  class="form-control" id="Telefone" placeholder="Telefone">
+        </div>
+        <div class="col-md-6 form-group padding-text">
+            <label for="formGroupExampleInput2">Email</label>
+            <input [ngClass]="{'border-error': mensagemErroEmail }" formControlName="Email" (blur)="onBlurEventEmail($event)"  class="form-control" id="Email" placeholder="Email">
+            <p class="error">{{this.mensagemErroEmail}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md form-group padding-text">
+            <label for="formGroupExampleInput2">CEP</label>
+            <input [ngClass]="{'border-error': mensagemErroCep }" formControlName="Cep" (blur)="onBlurEventCEP($event)" class="form-control" id="Cep" placeholder="CEP">
+            <p class="error">{{this.mensagemErroCep}}</p>
+        </div>
+        <div class="col-md form-group padding-text ">
+            <label for="formGroupExampleInput2">Cidade</label>
+            <input formControlName="Cidade"  class="form-control" id="Cidade" placeholder="Cidade">
+        </div>
+        <div class="col-md form-group padding-text">
+            <label for="formGroupExampleInput2">UF</label>
+            <input formControlName="UF"  class="form-control" id="UF" placeholder="UF">
+        </div>      
+    </div>
+    <div class="row">
+        <div class="col-md form-group padding-text">
+            <label for="formGroupExampleInput2">Logradouro</label>
+            <input formControlName="Logradouro"  class="form-control" id="Logradouro" placeholder="Logradouro">
+        </div>
+        <div class="col-md form-group padding-text">
+            <label for="formGroupExampleInput2">Numero</label>
+            <input type='number' formControlName="Numero"  class="form-control" id="Numero" placeholder="Numero">
+        </div>
+        <div class="col-md form-group padding-text">
+            <label for="formGroupExampleInput2">Bairro</label>
+            <input formControlName="Bairro"  class="form-control" id="Bairro" placeholder="Bairro">
+        </div>
     </div>
     <div class="form-group padding-text">
-        <label for="formGroupExampleInput2">Data Cadastro</label>
-        <input formControlName="Data_Cadastro"  class="form-control" id="Data_Cadastro" placeholder="Data Cadastro" type="date">
-    </div>
-    <div class="form-group padding-text">
-        <label for="formGroupExampleInput2">CPF/CNPJ</label>
-        <input formControlName="Cpf_Cnpj"  class="form-control" id="Cpf_Cnpj" placeholder="CPF/CNPJ">
-    </div>
-    <div class="form-group padding-text">
-        <label for="formGroupExampleInput2">Data Nascimento</label>
-        <input formControlName="Data_Nascimento"  class="form-control" id="Data_Nascimento" placeholder="Data Nascimento" type="date">
-    </div>
-    <div class="form-group padding-text">
-        <label for="formGroupExampleInput2">Tipo Pessoa</label>
-        <select class="form-select" aria-label="Default select example" formControlName="Tipo" id="Tipo"  placeholder="Tipo Pessoa">
-            <option value="F">Fisica</option>
-            <option value="J">Juridica</option>
-        </select>
-    </div>
-    <div class="form-group padding-text">
-        <label for="formGroupExampleInput2">Telefone</label>
-        <input formControlName="Telefone"  class="form-control" id="Telefone" placeholder="Telefone">
-    </div>
-    <div class="form-group padding-text">
-        <label for="formGroupExampleInput2">Email</label>
-        <input formControlName="Email"  class="form-control" id="Email" placeholder="Email">
-    </div>
-    <div class="form-group padding-text">
-        <label for="formGroupExampleInput2">Cep</label>
-        <input formControlName="Cep"  class="form-control" id="Cep" placeholder="Cep">
-    </div>
-    <div class="form-group padding-text">
-        <label for="formGroupExampleInput2">Logradouro</label>
-        <input formControlName="Logradouro"  class="form-control" id="Logradouro" placeholder="Logradouro">
-    </div>
-    <div class="form-group padding-text">
-        <label for="formGroupExampleInput2">Numero</label>
-        <input formControlName="Numero"  class="form-control" id="Numero" placeholder="Numero">
-    </div>
-    <div class="form-group padding-text">
-        <label for="formGroupExampleInput2">Bairro</label>
-        <input formControlName="Bairro"  class="form-control" id="Bairro" placeholder="Bairro">
-    </div>
-    <div class="form-group padding-text">
-        <label for="formGroupExampleInput2">Complemento</label>
+        <label for="Complemento">Complemento</label>
         <input formControlName="Complemento"  class="form-control" id="Complemento" placeholder="Complemento">
     </div>
-    <div class="form-group padding-text ">
-        <label for="formGroupExampleInput2">Cidade</label>
-        <input formControlName="Cidade"  class="form-control" id="Cidade" placeholder="Cidade">
+    <div class="row">
+        <div class="col-md-6 form-group padding-text">
+            <label for="Senha">Senha</label>
+            <input  class="form-control" id="Senha" placeholder="Senha">
+        </div>
+        <div class="col-md-6 form-group padding-text">
+            <label for="ConfirmarSenha">Confirmar Senha</label>
+            <input  class="form-control" id="ConfirmarSenha" placeholder="Email">
+        </div>
     </div>
-    <div class="form-group padding-text">
-        <label for="formGroupExampleInput2">UF</label>
-        <input formControlName="UF"  class="form-control" id="UF" placeholder="UF">
-    </div>
-    <div class="button-cad-cliente">
-        <button type="submit" class="btn btn-success btn-prop">Enviar</button>   
+    
+    <div class="padding-button">
+        <button [disabled] type="submit" class="btn btn-primary btn-prop btn-lg">Enviar</button>   
     </div>
 </form>

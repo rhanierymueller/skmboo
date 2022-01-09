@@ -8,7 +8,7 @@
 }
 
 .btn-prop {
-    width: 30%;
+    width: 100%;
 }
 
 .tittle {
@@ -16,7 +16,33 @@
     padding-top: 5%;
     font-size: revert;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.subtittle {
+    text-align: center;
+    padding-top: 2%;
+}
 
 .padding-text {    
     padding-top: 1%;
+}
+
+.padding-button {
+    padding-top: 3%;
+}
+
+.error {
+    color: red;
+    font-size: 90%;
+    
+}
+.border-error{
+  border-color: red;      
 }

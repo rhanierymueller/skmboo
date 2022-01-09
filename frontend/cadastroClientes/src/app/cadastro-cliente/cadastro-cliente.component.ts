@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';  
 import { Observable } from 'rxjs';  
 import { ClienteService } from '../cliente.service';  
 import { Cliente } from '../cliente';
+import serviceViacep from "@postalcode/service-viacep";
+
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -15,6 +17,22 @@ export class CadastroClienteComponent implements OnInit {
   allClientes: Observable<Cliente[]>;  
   clienteIdUpdate: any;  
   message = '';
+  mensagemErroNome: string;
+  mensagemErroEmail: string;
+  mensagemErroCep: string;
+  cepCompleto: any;
+
+ endCompleto: any;
+ 
+ endCompleto2: {
+  "postalcode": "",
+  "state": "",
+  "city": "",
+  "neighborhood": "",
+  "street": "",
+  "service": ""
+}
+ 
 
   constructor(private formbulider: FormBuilder, private clienteService: ClienteService) { }
 
@@ -35,12 +53,11 @@ export class CadastroClienteComponent implements OnInit {
       Cidade: ['', [Validators.required]],
       UF: ['', [Validators.required]]
     });  
-    //this.loadAllCliente();  
+    //this.loadAllCliente();
+    
   }
 
   onFormSubmit(value: any) {  
-    console.log("caiu aqui");
-    console.log(value);
     this.dataSaved = false;  
     const cliente = this.clienteForm.value;  
     this.CreateCliente(cliente);  
@@ -48,7 +65,6 @@ export class CadastroClienteComponent implements OnInit {
   } 
 
   CreateCliente(cliente: Cliente) {  
-    console.log(cliente, 'cliente');
     if (this.clienteIdUpdate == null) {  
       this.clienteService.createCliente(cliente).subscribe(  
         () => {  
@@ -98,5 +114,54 @@ export class CadastroClienteComponent implements OnInit {
     this.message = '';  
     this.dataSaved = false;  
   } 
+
+
+
+  onBlurEventName(event: any) {
+    this.mensagemErroNome = (event.target.value.length < 3) ? (this.mensagemErroNome = 'Nome deve ter no mínimo 3 caracteres.') :
+    ((event.target.value.length > 80) ? ( this.mensagemErroNome = 'Nome deve ter no máximo 80 caracteres.') :  this.mensagemErroNome = '');
+  }
+
+  onBlurEventEmail(event: any) {
+    this.mensagemErroEmail = (/^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(event.target.value) ? this.mensagemErroEmail = '' :
+    this.mensagemErroEmail = 'Formato de email inválido');
+  }
+
+  async buscarCepUsuario(cep: string){
+    const viaCep = new serviceViacep();
+    viaCep.name;
+    viaCep.type;
+    viaCep.country;
+    viaCep.codeLength;
+    //viaCep.get(cep).then((cep) => this.cepCompleto = cep );
+
+    this.endCompleto = await viaCep.get(cep);
+    this.cepCompletoFunc(this.endCompleto)
+  }
+
+
+
+
+  onBlurEventCEP(event: any) {
+    
+  event.target.value.length == 8 ? (this.mensagemErroCep = '', this.buscarCepUsuario((event.target.value))) : (this.mensagemErroCep = 'Cep inválido')
+  }
+
+
+   cepCompletoFunc(cep: any) {
+   this.endCompleto2 = cep;
+
+   this.clienteForm.Logradouro = this.endCompleto2.street;
+
+   this.clienteForm = this.formbulider.group({  
+    Logradouro: [this.endCompleto2.street],  
+    Bairro: [this.endCompleto2.neighborhood],  
+    Cidade: [this.endCompleto2.city],
+    UF: [this.endCompleto2.state]
+  });  
+  //this.loadAllCliente();
+  }
+
+   
 }
   
